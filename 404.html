@@ -45,24 +45,23 @@
         </video>
     </div>
     <audio id="audio" loop>
-        <source src="static/aud2io.mp3" type="aud2io/mp3">
+        <source src="static/audio.mp3" type="audio/mp3">
         Ваш браузер не поддерживает аудио.
     </audio>
     <script>
         const audio = document.getElementById('audio');
         const video = document.getElementById('video');
 
-        // Запускаем видео
-        video.play();
+        // Запускаем видео через 1 секунду
+        setTimeout(() => {
+            video.play();
+        }, 1000);
 
-        // Следим за временем видео
-        video.addEventListener('timeupdate', () => {
-            if (video.currentTime >= 5) {
-                video.pause(); // Останавливаем видео
-                audio.play(); // Включаем аудио
-                video.removeEventListener('timeupdate', arguments.callee); // Убираем слушатель
-            }
-        });
+        // Останавливаем видео и включаем звук через 3 секунды
+        setTimeout(() => {
+            video.pause(); // Останавливаем видео
+            audio.play(); // Включаем аудио
+        }, 3000);
     </script>
 </body>
 </html>
